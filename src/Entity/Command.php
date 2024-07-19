@@ -2,11 +2,25 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CommandRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Patch;
 use Doctrine\ORM\Mapping as ORM;
-
+#[ApiResource(
+    operations: [
+        new GetCollection(security: "is_granted('ROLE_BARMAN')"),
+        new Post(security: "is_granted('ROLE_WAITER')"),
+        new Get(security: "is_granted('ROLE_BARMAN', 'ROLE_WAITER')"),
+        new Patch(security: "is_granted('ROLE_WAITER')"),
+    ],
+    normalizationContext: ['groups' => ['read']],
+    denormalizationContext: ['groups' => ['write']]
+)]
 #[ORM\Entity(repositoryClass: CommandRepository::class)]
 class Command
 {
@@ -35,14 +49,14 @@ class Command
     private ?\DateTimeImmutable $paidAt = null;
 
     /**
-     * @var Collection<int, DrinkEntry>
+     * @var Collection<int, Drink>
      */
-    #[ORM\OneToMany(targetEntity: DrinkEntry::class, mappedBy: 'command', orphanRemoval: true)]
-    private Collection $drinkEntry;
+    #[ORM\ManyToMany(targetEntity: Drink::class)]
+    private Collection $drinks;
 
     public function __construct()
     {
-        $this->drinkEntry = new ArrayCollection();
+        $this->drinks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,31 +137,25 @@ class Command
     }
 
     /**
-     * @return Collection<int, DrinkEntry>
+     * @return Collection<int, Drink>
      */
-    public function getDrinkEntry(): Collection
+    public function getDrinks(): Collection
     {
-        return $this->drinkEntry;
+        return $this->drinks;
     }
 
-    public function addDrinkEntry(DrinkEntry $drinkEntry): static
+    public function addDrink(Drink $drink): static
     {
-        if (!$this->drinkEntry->contains($drinkEntry)) {
-            $this->drinkEntry->add($drinkEntry);
-            $drinkEntry->setCommand($this);
+        if (!$this->drinks->contains($drink)) {
+            $this->drinks->add($drink);
         }
 
         return $this;
     }
 
-    public function removeDrinkEntry(DrinkEntry $drinkEntry): static
+    public function removeDrink(Drink $drink): static
     {
-        if ($this->drinkEntry->removeElement($drinkEntry)) {
-            // set the owning side to null (unless already changed)
-            if ($drinkEntry->getCommand() === $this) {
-                $drinkEntry->setCommand(null);
-            }
-        }
+        $this->drinks->removeElement($drink);
 
         return $this;
     }
