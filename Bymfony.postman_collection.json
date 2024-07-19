@@ -1,0 +1,833 @@
+{
+	"info": {
+		"_postman_id": "fd923cf2-5776-4535-ac85-4c6fb24872fc",
+		"name": "Bymphony",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29610554"
+	},
+	"item": [
+		{
+			"name": "Barman Zone",
+			"item": [
+				{
+					"name": "Drinks",
+					"item": [
+						{
+							"name": "List All Drinks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SOURCE}}/drinks",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"drinks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add One Drink",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Docteur Cu\",\n    \"price\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SOURCE}}/drinks",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"drinks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Link drink to Media",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/merge-patch+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"media\" : \"api/medias/3\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SOURCE}}/drinks/2",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"drinks",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Drink",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{SOURCE}}/medias/2",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"medias",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Medias",
+					"item": [
+						{
+							"name": "List medias",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SOURCE}}/medias",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"medias"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one media",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SOURCE}}/medias/3",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"medias",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Media",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/lavie/Downloads/urssaf.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{SOURCE}}/medias",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"medias"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Link media to Drink",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/merge-patch+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drink\": \"/api/drinks/3\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SOURCE}}/medias/2",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"medias",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Media",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{SOURCE}}/medias/2",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"medias",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Get All Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SOURCE}}/commands",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get One Order",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SOURCE}}/commands",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set Order to Ready",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/merge-patch+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"ready\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SOURCE}}/commands/3",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"commands",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MjE0MDU2MzYsImV4cCI6MTcyMTQwOTIzNiwicm9sZXMiOlsiUk9MRV9CQVJNQU4iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJmYWJyaWNlLmJhcm1hbkBieW1mb255LmZyIiwiZnVsbG5hbWUiOiJGYWJyaWNlIEJhcm1hbiJ9.AK86c2kcTCzme-XwpFGy1-rXHBldOxm3Y6BsfXXhd9AbCoLfMCJFTWGw5iPDu869klyAoVmIT2_lA5rn0ALZOVTdmsuwlo1W-PAU6u8u_m4-7I-aqq0bt9edIOEGVV6Yt0ZBzzjYmLUqQ5SuX5So4mpk-6pIF8NVV4gUIZQkawlqWjG0__Iqa1CZJr78LJiNm1XzfypFuXHuZPY8pgHX3odqDsLWD0AKLi0XvUgcl9_fc5VjPxdgXO9hZB0KAgGnMiNVP5_WxS0vjrV6QJ0sY0ziMJCM-CszuC18ZkNZqyi2P81v6DsN7Uoi3RIFJh6VUftVDOOJQd4ga4SMdYDc7Q",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Waiter Zone",
+			"item": [
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Get All Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SOURCE}}/commands",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get One Order",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SOURCE}}/commands/3",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"commands",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add new order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"tableNumber\": 64,\n    \"assignee\": \"api/users/7\",\n    \"drinks\": [\n        \"api/drinks/5\",\n        \"api/drinks/4\",\n        \"api/drinks/7\",\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SOURCE}}/commands",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"commands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set Order to Paid",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/merge-patch+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\": \"paid\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SOURCE}}/commands/3",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"commands",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modify Drinks in Order",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/merge-patch+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drinks\": [\n        \"api/drinks/7\"\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SOURCE}}/commands/3",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"commands",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modify Order Table",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/merge-patch+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"tableNumber\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SOURCE}}/commands/3",
+									"host": [
+										"{{SOURCE}}"
+									],
+									"path": [
+										"commands",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MjE0MDY2NTIsImV4cCI6MTcyMTQxMDI1Miwicm9sZXMiOlsiUk9MRV9XQUlURVIiLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJnb250cmFuZC5zZXJ2ZXVyQGJ5bWZvbnkuZnIiLCJmdWxsbmFtZSI6IkdvbnRyYW5kIFNlcnZldXIifQ.b_kPfUnWkAvKptojQCwQfj3pIwdvcR7ESUoWG8E7BC2GpUN7j_wzXUGXYb_sCmnrJS-asck7tYhxhspsAGqK85pKl5g2d4TeqkqX_NoZ5fH85KC_BpqWkk0SpIhK42ptt5FHYyJeEQ4T2ffBQpbfuLOenFEqQNv1uFH1tSi_dSYETiqr5o9B68dZLnBjvVZrBS2lISc0Pqj-i9PUn5Lx4BE7fWxcb2tPdZ70Rb4YHkd5PSj6tH5O3Yh399Wmj0ys8U99kWS2vxvc-Jbt3_2SuzweCy6T8g2_01nbYegJ9nyY7fLN5wsOLmBhWAYUuzHGdG68504tu9rZzpVnc7HmNg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Logins",
+			"item": [
+				{
+					"name": "Get Patron Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"salvador.plouc@bymfony.fr\",\n    \"password\": \"Saucisse74\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SOURCE}}/auth",
+							"host": [
+								"{{SOURCE}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Barman Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"fabrice.barman@bymfony.fr\",\n    \"password\": \"Saucisse74\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SOURCE}}/auth",
+							"host": [
+								"{{SOURCE}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Waiter Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"gontrand.serveur@bymfony.fr\",\n    \"password\": \"Saucisse74\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SOURCE}}/auth",
+							"host": [
+								"{{SOURCE}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patron Zone",
+			"item": [
+				{
+					"name": "List Everyone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SOURCE}}/users",
+							"host": [
+								"{{SOURCE}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Add One",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullname\": \"Salvador Plouc\",\n    \"email\": \"salvador.plouc@bymfony.fr\",\n    \"plainPassword\": \"Saucisse74\",\n    \"roles\": [\"ROLE_PATRON\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SOURCE}}/users",
+							"host": [
+								"{{SOURCE}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update One",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullname\": \"Salvador Plouc\",\n    \"email\": \"salvador.plouc@bymfony.fr\",\n    \"plainPassword\": \"Saucisse74\",\n    \"roles\": [\"ROLE_PATRON\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SOURCE}}/users",
+							"host": [
+								"{{SOURCE}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullname\": \"Salvador Plouc\",\n    \"email\": \"salvador.plouc@bymfony.fr\",\n    \"plainPassword\": \"Saucisse74\",\n    \"roles\": [\"ROLE_PATRON\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SOURCE}}/users/",
+							"host": [
+								"{{SOURCE}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MjEzOTcwODQsImV4cCI6MTcyMTQwMDY4NCwicm9sZXMiOlsiUk9MRV9QQVRST04iLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJzYWx2YWRvci5wbG91Y0BieW1mb255LmZyIiwiZnVsbG5hbWUiOiJTYWx2YWRvciBQbG91YyJ9.sTaUD_IKogFYImhTB1cfSIZB0xbNmkWPL2R0ccLxJhhL8br1Y6kunwtMmEpGl27g4cMTLnzZSVuheVqHywt7Lj2W4wqwoN04UFuDBM6puqKyfQWdfTTJ9srCLt1pAzI_wIgY8cml2dw1s-Z8c8gB_c8bv6uxmoWWQmw-J_2DFbNGjH-NVupuBsTfTfGa7bqUMuYAeL6x7fYNIcU2a_vyBUjp5fPigS0SmV4bbcmuBm_7mDIrfOtullFQ6YoWDILxdAgza6WvK6ivGiry_ulYE_3gSLT4KlElbUxCH7pk61mlq8THLUKg-WuMB_ELgH0TzoodeRoub_ql1Ak7UIIR6g",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "SOURCE",
+			"value": "https://localhost:8000/api",
+			"type": "string"
+		}
+	]
+}
