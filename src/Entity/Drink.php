@@ -16,12 +16,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: DrinkRepository::class)]
 #[ApiResource(
     operations: [
-        new GetCollection(security: "is_granted('ROLE_BARMAN', 'ROLE_WAITER')"),
+        new GetCollection(security: "is_granted('ROLE_BARMAN') or is_granted('ROLE_WAITER')"),
         new Post(security: "is_granted('ROLE_BARMAN')"),
         new Get(security: "is_granted('ROLE_BARMAN')"),
         new Patch(security: "is_granted('ROLE_BARMAN')"),
         new Delete(security: "is_granted('ROLE_BARMAN')"),
     ],
+    forceEager: false,
     normalizationContext: ['groups' => ['read']],
     denormalizationContext: ['groups' => ['write']]
 )]
